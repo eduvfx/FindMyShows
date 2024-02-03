@@ -6,6 +6,7 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
@@ -14,10 +15,10 @@ class MainActivity : AppCompatActivity() {
 
     private lateinit var recyclerView: RecyclerView
     private lateinit var adapter: ShowsAdapter
+    private val key = "39a3c712614c598a6d5ca7a7c35a3ab1"
+    val popularCall = apiService.getPopular(apiKey = key)
 
     override fun onCreate(savedInstanceState: Bundle?) {
-
-        val key = "39a3c712614c598a6d5ca7a7c35a3ab1"
 
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_main)
@@ -25,19 +26,37 @@ class MainActivity : AppCompatActivity() {
         val searchView = findViewById<SearchView>(R.id.searchbar)
         searchView.onActionViewExpanded()
         searchView.clearFocus()
+
+        searchView.setOnQueryTextListener(object : SearchView.OnQueryTextListener {
+            override fun onQueryTextSubmit(query: String?): Boolean {
+                // Handle search query submission here
+                if (query.isNullOrBlank()) {
+                    getQuery(popularCall)
+                } else {
+                    val call = apiService.getShows(apiKey = key, query = query)
+                    getQuery(call)
+                }
+                return true
+            }
+
+            override fun onQueryTextChange(newText: String?): Boolean {
+                return true
+            }
+        })
         // Clear focus from SearchView to lower the keyboard
 
-        recyclerView = findViewById<RecyclerView>(R.id.recyclerView)
+        recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
         adapter = ShowsAdapter(emptyList())
         recyclerView.adapter = adapter
 
         // Make a sample network request using Retrofit
-        val apiService = apiService
-        val call = apiService.getPost(apiKey = key)
+        getQuery(popularCall)
+    }
 
-        call.enqueue(object : retrofit2.Callback<Popular> {
-            override fun onResponse(call: retrofit2.Call<Popular>, response: retrofit2.Response<Popular>) {
+    private fun getQuery(call: Call<Query>) {
+        call.enqueue(object : retrofit2.Callback<Query> {
+            override fun onResponse(call: retrofit2.Call<Query>, response: retrofit2.Response<Query>) {
                 if (response.isSuccessful) {
                     val apiResponse: List<Result>? = response.body()?.results
                     listShows(apiResponse)
@@ -54,7 +73,7 @@ class MainActivity : AppCompatActivity() {
                 }
             }
 
-            override fun onFailure(call: retrofit2.Call<Popular>, t: Throwable) {
+            override fun onFailure(call: retrofit2.Call<Query>, t: Throwable) {
                 // Handle network error
                 Log.e("NetworkError", "Network request failed", t)
             }

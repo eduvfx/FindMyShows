@@ -6,5 +6,8 @@ import retrofit2.http.Query
 interface ApiService {
 
     @GET("tv/popular")
-    fun getPost(@Query("api_key") apiKey: String): Call<Popular>
+    fun getPopular(@Query("api_key") apiKey: String): Call<com.example.findmyshows.Query>
+
+    @GET("search/tv")
+    fun getShows(@Query("api_key") apiKey: String, @Query("query") query: String): Call<com.example.findmyshows.Query>
 }

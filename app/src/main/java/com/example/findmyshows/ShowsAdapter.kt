@@ -6,11 +6,13 @@ import kotlin.math.roundToInt
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.ImageView
 import android.widget.ProgressBar
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
 import java.text.SimpleDateFormat
 import java.util.*
+import com.squareup.picasso.Picasso
 
 
 class ShowsAdapter(private val itemList: List<Result>) : RecyclerView.Adapter<ShowsAdapter.ViewHolder>() {
@@ -44,6 +46,12 @@ class ShowsAdapter(private val itemList: List<Result>) : RecyclerView.Adapter<Sh
                 score >= 70 -> ColorStateList.valueOf(Color.parseColor("#21d07a"))// Green
                 score >= 40 -> ColorStateList.valueOf(Color.parseColor("#d2d531")) // Yellow
                 else -> ColorStateList.valueOf(Color.parseColor("#db2360")) // Red
+            }
+            val picture = itemView.findViewById<ImageView>(R.id.picture)
+            if (item.backdrop_path != null) {
+                Picasso.get().load("https://image.tmdb.org/t/p/w500/" + item.backdrop_path).into(picture)
+            } else {
+                picture.setImageResource(R.drawable.nophoto)
             }
         }
 
