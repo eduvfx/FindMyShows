@@ -13,7 +13,7 @@ class SplashScreen : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_splash_screen)
 
-        val splashImg: ImageView = findViewById<ImageView>(R.id.splashImg)
+        val splashImg: ImageView = findViewById(R.id.splashImg)
         splashImg.alpha = 0f
         splashImg.animate().setDuration(500).alpha(1f).withEndAction{
             handler.postDelayed({

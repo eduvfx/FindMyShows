@@ -2,6 +2,7 @@
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/layout"
     android:layout_width="match_parent"
     android:layout_height="wrap_content"
     android:background="#00FFFFFF"
@@ -29,6 +30,7 @@
             android:layout_width="245dp"
             android:layout_height="wrap_content"
             android:layout_marginBottom="8dp"
+            android:fontFamily="@font/noto_sans_bold"
             android:textColor="@color/darkblue"
             android:textSize="22sp"
             android:textStyle="bold" />
@@ -38,6 +40,7 @@
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_marginTop="-10dp"
+            android:fontFamily="@font/noto_sans"
             android:textColor="@color/gray"
             android:textSize="14sp" />
     </LinearLayout>
@@ -81,12 +84,12 @@
         android:layout_alignParentEnd="true"
         android:layout_alignParentRight="true"
         android:layout_centerInParent="true"
-        android:layout_marginTop="15dp"
+        android:layout_marginTop="13dp"
         android:layout_marginEnd="17dp"
+        android:fontFamily="@font/noto_sans"
         android:textAppearance="@style/TextAppearance.AppCompat.Large"
-        android:textSize="14sp"
         android:textColor="@color/white"
-        android:layout_centerVertical="true"/>
+        android:textSize="14sp" />
 
     <!-- Add more TextViews or other UI elements as needed for your data model -->
 </RelativeLayout>
