@@ -1,6 +1,7 @@
 <?xml version="1.0" encoding="utf-8"?>
 <RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -40,7 +41,9 @@
             android:layout_height="28dp"
             android:layout_gravity="start"
             android:clickable="true"
-            android:src="@drawable/arrow" />
+            android:focusable="true"
+            android:src="@drawable/arrow"
+            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
 
     </androidx.appcompat.widget.Toolbar>
 
@@ -51,6 +54,7 @@
         android:fillViewport="true">
 
         <androidx.constraintlayout.widget.ConstraintLayout
+            android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
@@ -62,7 +66,8 @@
                 android:scaleType="centerCrop"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent" />
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <View
                 android:layout_width="match_parent"
@@ -74,25 +79,26 @@
 
             <ImageView
                 android:id="@+id/poster"
-                android:layout_marginStart="20dp"
-                android:layout_marginTop="20dp"
                 android:layout_width="133dp"
                 android:layout_height="200dp"
+                android:layout_marginStart="20dp"
+                android:layout_marginTop="20dp"
                 android:scaleType="centerCrop"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toTopOf="parent"/>
+                app:layout_constraintTop_toTopOf="parent"
+                tools:ignore="ContentDescription" />
 
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="165dp"
                 android:layout_marginTop="15dp"
-                android:paddingEnd="185dp"
                 android:fontFamily="@font/noto_sans_bold"
-                android:textColor="@color/white"
-                android:textSize="26dp"
+                android:paddingStart="165dp"
+                android:paddingEnd="30dp"
                 android:text=""
+                android:textColor="@color/white"
+                android:textSize="26sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
@@ -100,69 +106,64 @@
                 android:id="@+id/genres"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="165dp"
                 android:layout_marginTop="-5dp"
                 android:fontFamily="@font/noto_sans"
-                android:textColor="@color/white"
-                android:textSize="16dp"
+                android:paddingStart="165dp"
+                android:paddingEnd="30dp"
                 android:text=""
+                android:textColor="@color/white"
+                android:textSize="16sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title" />
 
             <ImageView
-                android:src="@drawable/outside_circle"
+                android:id="@+id/outside_circle"
                 android:layout_width="43dp"
                 android:layout_height="43dp"
                 android:layout_marginStart="165dp"
                 android:layout_marginTop="3.4dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
+                android:src="@drawable/outside_circle"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/genres"/>
+                app:layout_constraintTop_toBottomOf="@id/genres"
+                tools:ignore="ContentDescription" />
 
             <ProgressBar
                 android:id="@+id/greyCircle"
-                android:indeterminateOnly="false"
-                android:progressDrawable="@drawable/grey_circle"
-                android:progress="40"
-                android:layout_marginStart="161.4dp"
                 android:layout_width="50dp"
                 android:layout_height="50dp"
-                android:layout_alignParentEnd="true"
-                android:layout_alignParentRight="true"
-                android:layout_centerVertical="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/genres"/>
+                android:indeterminateOnly="false"
+                android:progress="40"
+                android:progressDrawable="@drawable/grey_circle"
+                app:layout_constraintBottom_toBottomOf="@id/outside_circle"
+                app:layout_constraintEnd_toEndOf="@id/outside_circle"
+                app:layout_constraintStart_toStartOf="@id/outside_circle"
+                app:layout_constraintTop_toTopOf="@id/outside_circle" />
 
             <ProgressBar
                 android:id="@+id/progressBar"
-                android:indeterminateOnly="false"
-                android:progressDrawable="@drawable/circle"
-                android:progress="40"
                 android:layout_width="50dp"
-                android:layout_marginStart="161.4dp"
                 android:layout_height="50dp"
-                android:layout_alignParentEnd="true"
-                android:layout_centerVertical="true"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/genres"/>
+                android:indeterminateOnly="false"
+                android:progress="40"
+                android:progressDrawable="@drawable/circle"
+                app:layout_constraintBottom_toBottomOf="@id/outside_circle"
+                app:layout_constraintEnd_toEndOf="@id/outside_circle"
+                app:layout_constraintStart_toStartOf="@id/outside_circle"
+                app:layout_constraintTop_toTopOf="@id/outside_circle" />
 
             <TextView
                 android:id="@+id/textProgress"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentEnd="true"
-                android:layout_centerInParent="true"
-                android:layout_marginStart="178.7dp"
-                android:layout_marginTop="10.5dp"
-                android:layout_marginEnd="17dp"
+                android:layout_marginBottom="2.5dp"
                 android:fontFamily="@font/noto_sans"
                 android:textAppearance="@style/TextAppearance.AppCompat.Large"
                 android:textColor="@color/white"
                 android:textSize="14sp"
-                app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/genres"/>
+                app:layout_constraintBottom_toBottomOf="@id/outside_circle"
+                app:layout_constraintEnd_toEndOf="@id/outside_circle"
+                app:layout_constraintStart_toStartOf="@id/outside_circle"
+                app:layout_constraintTop_toTopOf="@id/outside_circle" />
 
             <TextView
                 android:layout_width="wrap_content"
@@ -170,22 +171,24 @@
                 android:layout_marginStart="215dp"
                 android:layout_marginTop="3dp"
                 android:fontFamily="@font/noto_sans_bold"
-                android:textColor="@color/white"
-                android:textSize="22dp"
                 android:text="Score"
+                android:textColor="@color/white"
+                android:textSize="22sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/genres" />
+                app:layout_constraintTop_toBottomOf="@id/genres"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/tagline"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginTop="50dp"
                 android:layout_marginStart="165dp"
                 android:fontFamily="@font/noto_sans"
-                android:textColor="@color/lightgray"
-                android:textSize="14dp"
+                android:paddingTop="50dp"
+                android:paddingEnd="30dp"
                 android:text=""
+                android:textColor="@color/lightgray"
+                android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/genres" />
 
@@ -195,25 +198,55 @@
                 android:layout_marginStart="18dp"
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/noto_sans_bold"
-                android:textColor="@color/black"
-                android:textSize="20dp"
                 android:text="Overview"
+                android:textColor="@color/black"
+                android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/background" />
+                app:layout_constraintTop_toBottomOf="@id/background"
+                tools:ignore="HardcodedText" />
 
             <TextView
                 android:id="@+id/overview"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_marginStart="18dp"
                 android:layout_marginTop="40dp"
-                android:paddingEnd="25dp"
                 android:fontFamily="@font/noto_sans"
-                android:textColor="@color/gray"
-                android:textSize="15dp"
+                android:paddingStart="18dp"
+                android:paddingEnd="18dp"
                 android:text=""
+                android:textColor="@color/gray"
+                android:textSize="15sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/background" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="5dp"
+                android:fontFamily="@font/noto_sans_bold"
+                android:text="Keywords"
+                android:textColor="@color/black"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/overview"
+                tools:ignore="HardcodedText" />
+
+            <androidx.constraintlayout.helper.widget.Flow
+                android:id="@+id/keywords"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="45dp"
+                android:layout_marginEnd="18dp"
+                app:flow_horizontalGap="8dp"
+                app:flow_verticalGap="8dp"
+                app:flow_horizontalStyle="packed"
+                app:flow_horizontalBias="0"
+                app:flow_horizontalAlign="start"
+                app:flow_wrapMode="chain"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/overview" />
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

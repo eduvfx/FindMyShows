@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import androidx.appcompat.widget.SearchView
 import androidx.recyclerview.widget.LinearLayoutManager
 import androidx.recyclerview.widget.RecyclerView
+import com.example.findmyshows.dataclasses.Query
+import com.example.findmyshows.dataclasses.Result
 import retrofit2.Call
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
@@ -55,8 +57,6 @@ class MainActivity : AppCompatActivity() {
 
         recyclerView = findViewById(R.id.recyclerView)
         recyclerView.layoutManager = LinearLayoutManager(this)
-        adapter = ShowsAdapter(emptyList())
-        recyclerView.adapter = adapter
 
         // Make a sample network request using Retrofit
         val popularCall = apiService.getPopular(apiKey = key)
@@ -87,7 +87,10 @@ class MainActivity : AppCompatActivity() {
                         // Add more cases for other HTTP status codes as needed
                         else -> "Unknown error"
                     }
-                    Log.e("ApiError", "HTTP Status Code: ${response.code()}, Message: $errorMessage")
+                    Log.e(
+                        "ApiError",
+                        "HTTP Status Code: ${response.code()}, Message: $errorMessage"
+                    )
                 }
             }
 

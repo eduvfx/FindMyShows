@@ -12,12 +12,15 @@ import android.widget.ProgressBar
 import android.widget.RelativeLayout
 import android.widget.TextView
 import androidx.recyclerview.widget.RecyclerView
+import com.example.findmyshows.dataclasses.Result
+import com.example.findmyshows.dataclasses.ResultKeywords
 import java.text.SimpleDateFormat
 import java.util.*
 import com.squareup.picasso.Picasso
 
 
-class ShowsAdapter(private val itemList: List<Result>) : RecyclerView.Adapter<ShowsAdapter.ViewHolder>() {
+class ShowsAdapter(private val itemList: List<Result>) :
+    RecyclerView.Adapter<ShowsAdapter.ViewHolder>() {
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): ViewHolder {
         val view = LayoutInflater.from(parent.context).inflate(R.layout.shows_layout, parent, false)
@@ -40,7 +43,8 @@ class ShowsAdapter(private val itemList: List<Result>) : RecyclerView.Adapter<Sh
             // Bind data to the UI elements
             itemView.findViewById<TextView>(R.id.textTitle).text = item.name
             if (item.first_air_date != "") {
-                itemView.findViewById<TextView>(R.id.textDate).text = formatDate(item.first_air_date)
+                itemView.findViewById<TextView>(R.id.textDate).text =
+                    formatDate(item.first_air_date)
             } else {
                 itemView.findViewById<TextView>(R.id.textDate).text = ""
             }
@@ -55,7 +59,8 @@ class ShowsAdapter(private val itemList: List<Result>) : RecyclerView.Adapter<Sh
             }
             val picture = itemView.findViewById<ImageView>(R.id.picture)
             if (item.poster_path != null) {
-                Picasso.get().load("https://image.tmdb.org/t/p/w500/" + item.poster_path).into(picture)
+                Picasso.get().load("https://image.tmdb.org/t/p/w500/" + item.poster_path)
+                    .into(picture)
             } else {
                 picture.setImageResource(R.drawable.nophoto)
             }

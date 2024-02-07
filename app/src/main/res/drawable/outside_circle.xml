@@ -6,6 +6,6 @@
     <!-- Size of the circle -->
     <size
         android:width="100dp"
-    android:height="100dp" /> <!-- Set the desired height of the circle -->
+        android:height="100dp" /> <!-- Set the desired height of the circle -->
 
 </shape>

@@ -12,12 +12,13 @@
         android:fontFamily="@font/ubuntu_bold"
         android:text="FIND MY SHOWS"
         android:textColor="@color/darkblue"
-        android:textSize="40dp"
+        android:textSize="40sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.025" />
+        app:layout_constraintVertical_bias="0.025"
+        tools:ignore="HardcodedText" />
 
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchbar"
@@ -61,22 +62,25 @@
         android:visibility="invisible"
         android:text="No results found."
         android:textColor="@color/darkgray"
-        android:textSize="20dp"
+        android:textSize="20sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.2" />
+        app:layout_constraintVertical_bias="0.2"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:layout_width="375dp"
         android:layout_height="1dp"
+        android:contentDescription="Grey border"
         android:src="@drawable/bottom_border"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.84"/>
+        app:layout_constraintVertical_bias="0.84"
+        tools:ignore="HardcodedText,ImageContrastCheck" />
 
     <TextView
         android:id="@+id/textView"
@@ -90,7 +94,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.8775" />
+        app:layout_constraintVertical_bias="0.8775"
+        tools:ignore="HardcodedText" />
 
     <ImageView
         android:id="@+id/imageView"
@@ -101,7 +106,8 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"/>
+        app:layout_constraintVertical_bias="0.96"
+        tools:ignore="ContentDescription" />
 
 
 </androidx.constraintlayout.widget.ConstraintLayout>
