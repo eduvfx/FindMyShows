@@ -6,6 +6,7 @@
     android:layout_height="match_parent"
     tools:context=".MainActivity">
 
+    <!-- Título da aplicação -->
     <TextView
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -20,6 +21,7 @@
         app:layout_constraintVertical_bias="0.025"
         tools:ignore="HardcodedText" />
 
+    <!-- Barra de pesquisa -->
     <androidx.appcompat.widget.SearchView
         android:id="@+id/searchbar"
         android:layout_width="match_parent"
@@ -31,20 +33,22 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1"
-        app:queryHint="Search for a TV show, movie, etc." />
+        app:queryHint="Pesquisar por um programa de TV, filme, etc." />
 
+    <!-- Barra de progresso -->
     <ProgressBar
         android:id="@+id/progressBar"
+        style="?android:attr/progressBarStyleLarge"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone"
-        style="?android:attr/progressBarStyleLarge"
-        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 
+    <!-- RecyclerView para mostrar os resultados -->
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -55,15 +59,16 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.50" />
 
+    <!-- Texto para mostrar quando não há resultados -->
     <TextView
         android:id="@+id/noResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/ubuntu_bold"
-        android:visibility="gone"
-        android:text="No results found."
+        android:text="Nenhum resultado encontrado."
         android:textColor="@color/darkgray"
         android:textSize="20sp"
+        android:visibility="gone"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -71,11 +76,25 @@
         app:layout_constraintVertical_bias="0.2"
         tools:ignore="HardcodedText" />
 
+    <!-- Logótipo -->
     <ImageView
+        android:id="@+id/imageView"
+        android:layout_width="55dp"
+        android:layout_height="55dp"
+        android:src="@drawable/moviedb"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.96"
+        tools:ignore="ContentDescription" />
+
+    <!-- Linha cinza separadora -->
+    <View
         android:layout_width="375dp"
         android:layout_height="1dp"
-        android:contentDescription="Grey border"
-        android:src="@drawable/bottom_border"
+        android:background="@color/gray"
+        android:contentDescription="Borda cinza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
@@ -83,6 +102,7 @@
         app:layout_constraintVertical_bias="0.84"
         tools:ignore="HardcodedText,ImageContrastCheck" />
 
+    <!-- Texto "Powered By" -->
     <TextView
         android:id="@+id/textView"
         android:layout_width="wrap_content"
@@ -97,18 +117,4 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.8775"
         tools:ignore="HardcodedText" />
-
-    <ImageView
-        android:id="@+id/imageView"
-        android:layout_width="55dp"
-        android:layout_height="55dp"
-        android:src="@drawable/moviedb"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.96"
-        tools:ignore="ContentDescription" />
-
-
 </androidx.constraintlayout.widget.ConstraintLayout>

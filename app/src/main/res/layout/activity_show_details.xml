@@ -5,7 +5,7 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
-    <!-- Toolbar -->
+    <!-- Barra de ferramentas -->
     <androidx.appcompat.widget.Toolbar
         android:id="@+id/toolbar"
         android:layout_width="match_parent"
@@ -14,27 +14,21 @@
         android:elevation="4dp"
         android:popupTheme="@style/ThemeOverlay.AppCompat.Light"
         android:theme="@style/ThemeOverlay.AppCompat.ActionBar"
-        app:layout_behavior="com.google.android.material.appbar.AppBarLayout$ScrollingViewBehavior"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent">
 
-        <!-- Add your custom elements to the Toolbar, such as title, icons, etc. -->
-        <!-- Example title -->
+        <!-- Título da barra de ferramentas -->
         <TextView
             android:id="@+id/toolbar_title"
-            android:layout_width="300dp"
+            android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_gravity="center_horizontal"
             android:fontFamily="@font/noto_sans"
-            android:gravity="center"
             android:text=""
             android:textColor="@android:color/white"
             android:textSize="18sp"
             android:textStyle="bold" />
 
-        <!-- Example navigation icon -->
+        <!-- Ícone da barra de ferramentas -->
         <ImageView
             android:id="@+id/toolbar_icon"
             android:layout_width="28dp"
@@ -42,23 +36,20 @@
             android:layout_gravity="start"
             android:clickable="true"
             android:focusable="true"
-            android:src="@drawable/arrow"
-            tools:ignore="ContentDescription,SpeakableTextPresentCheck,TouchTargetSizeCheck" />
+            android:src="@drawable/arrow" />
 
     </androidx.appcompat.widget.Toolbar>
 
+    <!-- Barra de progresso -->
     <ProgressBar
         android:id="@+id/progressBarDetails"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_centerInParent="true"
         android:visibility="gone"
-        style="?android:attr/progressBarStyleLarge"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintBottom_toBottomOf="parent" />
+        style="?android:attr/progressBarStyleLarge" />
 
+    <!-- ScrollView para a visualização dos detalhes -->
     <androidx.core.widget.NestedScrollView
         android:id="@+id/detailsScroll"
         android:layout_width="match_parent"
@@ -66,12 +57,14 @@
         android:layout_below="@id/toolbar"
         android:fillViewport="true">
 
+        <!-- Layout de constraint para organizar os elementos -->
         <androidx.constraintlayout.widget.ConstraintLayout
             android:id="@+id/constraintLayout"
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
             android:orientation="vertical">
 
+            <!-- Imagem de fundo -->
             <ImageView
                 android:id="@+id/background"
                 android:layout_width="match_parent"
@@ -82,6 +75,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
 
+            <!-- Visualização de sobreposição para escurecer a imagem de fundo -->
             <View
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
@@ -90,6 +84,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Poster do programa -->
             <ImageView
                 android:id="@+id/poster"
                 android:layout_width="133dp"
@@ -101,6 +96,7 @@
                 app:layout_constraintTop_toTopOf="parent"
                 tools:ignore="ContentDescription" />
 
+            <!-- Título do programa -->
             <TextView
                 android:id="@+id/title"
                 android:layout_width="wrap_content"
@@ -115,6 +111,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
 
+            <!-- Géneros do programa -->
             <TextView
                 android:id="@+id/genres"
                 android:layout_width="wrap_content"
@@ -129,6 +126,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/title" />
 
+            <!-- Ícone de círculo externo -->
             <ImageView
                 android:id="@+id/outside_circle"
                 android:layout_width="43dp"
@@ -140,6 +138,7 @@
                 app:layout_constraintTop_toBottomOf="@id/genres"
                 tools:ignore="ContentDescription" />
 
+            <!-- Barra de progresso cinza -->
             <ProgressBar
                 android:id="@+id/greyCircle"
                 android:layout_width="50dp"
@@ -152,6 +151,7 @@
                 app:layout_constraintStart_toStartOf="@id/outside_circle"
                 app:layout_constraintTop_toTopOf="@id/outside_circle" />
 
+            <!-- Barra de progresso colorida -->
             <ProgressBar
                 android:id="@+id/progressBar"
                 android:layout_width="50dp"
@@ -164,6 +164,7 @@
                 app:layout_constraintStart_toStartOf="@id/outside_circle"
                 app:layout_constraintTop_toTopOf="@id/outside_circle" />
 
+            <!-- Texto de progresso -->
             <TextView
                 android:id="@+id/textProgress"
                 android:layout_width="wrap_content"
@@ -178,6 +179,7 @@
                 app:layout_constraintStart_toStartOf="@id/outside_circle"
                 app:layout_constraintTop_toTopOf="@id/outside_circle" />
 
+            <!-- Texto "Score" -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -191,6 +193,7 @@
                 app:layout_constraintTop_toBottomOf="@id/genres"
                 tools:ignore="HardcodedText" />
 
+            <!-- Título "Tagline" -->
             <TextView
                 android:id="@+id/tagline"
                 android:layout_width="wrap_content"
@@ -203,8 +206,10 @@
                 android:textColor="@color/lightgray"
                 android:textSize="14sp"
                 app:layout_constraintStart_toStartOf="parent"
-                app:layout_constraintTop_toBottomOf="@id/genres" />
+                app:layout_constraintTop_toBottomOf="@id/genres"
+                tools:ignore="RtlSymmetry" />
 
+            <!-- Título "Overview" -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -218,6 +223,7 @@
                 app:layout_constraintTop_toBottomOf="@id/background"
                 tools:ignore="HardcodedText" />
 
+            <!-- Visão geral do programa -->
             <TextView
                 android:id="@+id/overview"
                 android:layout_width="wrap_content"
@@ -232,6 +238,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/background" />
 
+            <!-- Título "Keywords" -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -245,6 +252,7 @@
                 app:layout_constraintTop_toBottomOf="@id/overview"
                 tools:ignore="HardcodedText" />
 
+            <!-- Palavras-chave -->
             <androidx.constraintlayout.helper.widget.Flow
                 android:id="@+id/keywords"
                 android:layout_width="match_parent"
@@ -261,6 +269,7 @@
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/overview" />
 
+            <!-- Título "Episodes" -->
             <TextView
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
@@ -274,19 +283,21 @@
                 app:layout_constraintTop_toBottomOf="@id/keywords"
                 tools:ignore="HardcodedText" />
 
+            <!-- Dropdown para selecionar temporada -->
             <Spinner
                 android:id="@+id/dropdown"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:paddingStart="0dp"
                 android:layout_marginStart="10dp"
                 android:layout_marginTop="50dp"
-                android:layout_marginEnd="18dp"
+                android:paddingTop="10dp"
+                android:paddingBottom="10dp"
+                android:spinnerDropDownItemStyle="@layout/spinner_item"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/keywords"
-                android:spinnerDropDownItemStyle="@layout/spinner_item"/>
+                tools:ignore="TouchTargetSizeCheck" />
 
+            <!-- RecyclerView para mostrar os episódios -->
             <androidx.recyclerview.widget.RecyclerView
                 android:id="@+id/episodes"
                 android:layout_width="match_parent"

@@ -33,42 +33,52 @@ class ShowDetails : AppCompatActivity() {
     private lateinit var detailsScroll: NestedScrollView
     private var receivedInt: Int = 0
 
+    // Chave da API
     private val key = "39a3c712614c598a6d5ca7a7c35a3ab1"
 
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_show_details)
 
+        // Inicializa as views
         initializeViews()
         formatRecyclerView()
 
+        // Configura o botão de retorno
         val back = findViewById<ImageView>(R.id.toolbar_icon)
         back.setOnClickListener {
             finish()
         }
 
+        // Recebe o ID do programa da atividade anterior
         receivedInt = intent.getIntExtra("id", 0)
 
+        // Mostra a barra de progresso
         showLoading()
 
+        // Obtém os detalhes do programa
         val detailsCall = apiService.getShowDetails(showId = receivedInt, apiKey = key)
         getDetails(detailsCall)
 
+        // Obtém as palavras-chave do programa
         val keywordsCall = apiService.getKeywords(showId = receivedInt, apiKey = key)
         getKeywords(keywordsCall)
     }
 
+    // Mostra a barra de progresso
     private fun showLoading() {
         progressBarDetails.visibility = View.VISIBLE
         detailsScroll.visibility = View.GONE
     }
 
+    // Formata o RecyclerView
     private fun formatRecyclerView() {
         recyclerView.layoutManager = LinearLayoutManager(this)
         recyclerView.layoutManager?.canScrollVertically()
         recyclerView.layoutManager?.canScrollHorizontally()
     }
 
+    // Inicializa as views
     private fun initializeViews() {
         background = findViewById(R.id.background)
         poster = findViewById(R.id.poster)
@@ -80,6 +90,7 @@ class ShowDetails : AppCompatActivity() {
         recyclerView = findViewById(R.id.episodes)
     }
 
+    // Obtém os episódios do programa
     private fun getEpisodes(call: Call<QuerySeason>) {
         call.enqueue(object : retrofit2.Callback<QuerySeason> {
             override fun onResponse(
@@ -95,11 +106,12 @@ class ShowDetails : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<QuerySeason>, t: Throwable) {
-                Log.e("NetworkError", "Network request failed", t)
+                Log.e("NetworkError", "Falha na requisição de rede", t)
             }
         })
     }
 
+    // Obtém as palavras-chave do programa
     private fun getKeywords(call: Call<QueryKeywords>) {
         call.enqueue(object : retrofit2.Callback<QueryKeywords> {
             override fun onResponse(
@@ -115,11 +127,12 @@ class ShowDetails : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<QueryKeywords>, t: Throwable) {
-                Log.e("NetworkError", "Network request failed", t)
+                Log.e("NetworkError", "Falha na requisição de rede", t)
             }
         })
     }
 
+    // Obtém os detalhes do programa
     private fun getDetails(call: Call<QueryShow>) {
         call.enqueue(object : retrofit2.Callback<QueryShow> {
             override fun onResponse(
@@ -135,11 +148,12 @@ class ShowDetails : AppCompatActivity() {
             }
 
             override fun onFailure(call: Call<QueryShow>, t: Throwable) {
-                Log.e("NetworkError", "Network request failed", t)
+                Log.e("NetworkError", "Falha na requisição de rede", t)
             }
         })
     }
 
+    // Lista os episódios na RecyclerView
     private fun listEpisodes(episodes: List<Episode>?) {
         episodes?.let {
             adapter = EpisodeAdapter(it)
@@ -147,15 +161,17 @@ class ShowDetails : AppCompatActivity() {
         }
     }
 
+    // Manipula erros de resposta da API
     private fun handleErrorResponse(response: retrofit2.Response<*>) {
         val errorMessage: String = when (response.code()) {
-            404 -> "Resource not found"
-            401 -> "Unauthorized"
-            else -> "Unknown error"
+            404 -> "Recurso não encontrado"
+            401 -> "Não autorizado"
+            else -> "Erro desconhecido"
         }
-        Log.e("ApiError", "HTTP Status Code: ${response.code()}, Message: $errorMessage")
+        Log.e("ApiError", "Código de status HTTP: ${response.code()}, Mensagem: $errorMessage")
     }
 
+    // Mostra as palavras-chave na interface
     private fun displayKeywords(keywords: List<ResultKeywords>) {
         for (item in keywords) {
             val textView = TextView(this@ShowDetails)
@@ -173,6 +189,7 @@ class ShowDetails : AppCompatActivity() {
         }
     }
 
+    // Mostra os detalhes do programa na interface
     private fun displayShowDetails(apiResponse: QueryShow) {
         val score = apiResponse.vote_average.times(10).roundToInt()
 
@@ -189,6 +206,7 @@ class ShowDetails : AppCompatActivity() {
         hideLoading()
     }
 
+    // Configura o dropdown para selecionar temporadas
     private fun setupDropDown(apiResponse: QueryShow) {
         val mutableList: MutableList<String> = mutableListOf()
         for (season in apiResponse.seasons) {
@@ -204,6 +222,7 @@ class ShowDetails : AppCompatActivity() {
         setDropdownListener(apiResponse)
     }
 
+    // Define um listener para o dropdown
     private fun setDropdownListener(apiResponse: QueryShow) {
         val seasonMap = apiResponse.seasons.associateBy({ it.name }, { it.season_number })
         dropdown.onItemSelectedListener = object : AdapterView.OnItemSelectedListener {
@@ -230,6 +249,7 @@ class ShowDetails : AppCompatActivity() {
         }
     }
 
+    // Configura as TextViews com os detalhes do programa
     private fun setupTextViews(
         apiResponse: QueryShow,
         score: Int
@@ -241,11 +261,13 @@ class ShowDetails : AppCompatActivity() {
         findViewById<TextView>(R.id.overview).text = apiResponse.overview
     }
 
+    // Esconde a barra de progresso
     private fun hideLoading() {
         progressBarDetails.visibility = View.GONE
         detailsScroll.visibility = View.VISIBLE
     }
 
+    // Exibe imagens do programa
     private fun setImages(apiResponse: QueryShow) {
         if (apiResponse.backdrop_path != null) {
             Picasso.get()
@@ -269,6 +291,7 @@ class ShowDetails : AppCompatActivity() {
         }
     }
 
+    // Configura o texto dos géneros
     private fun setGenresText(genreList: List<Genre>) {
         var genres = ""
         for (genre in genreList) {
@@ -281,6 +304,7 @@ class ShowDetails : AppCompatActivity() {
         findViewById<TextView>(R.id.genres).text = genres
     }
 
+    // Configura a cor e o progresso da barra de progresso
     private fun setProgressBarColor(score: Int) {
         score.let {
             progressBar.progress = score
@@ -292,6 +316,7 @@ class ShowDetails : AppCompatActivity() {
         }
     }
 
+    // Cliente Retrofit para comunicação com a API
     companion object RetrofitClient {
         private const val BASE_URL = "https://api.themoviedb.org/3/"
 

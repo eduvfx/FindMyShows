@@ -11,7 +11,7 @@
     android:paddingStart="22dp"
     tools:ignore="RtlSymmetry">
 
-
+    <!-- Imagem do programa -->
     <ImageView
         android:id="@+id/picture"
         android:layout_width="66dp"
@@ -20,6 +20,7 @@
         android:src="@drawable/moviedb"
         tools:ignore="ContentDescription" />
 
+    <!-- Layout para informações do programa -->
     <LinearLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -27,6 +28,7 @@
         android:layout_marginStart="80dp"
         android:orientation="vertical">
 
+        <!-- Título do programa -->
         <TextView
             android:id="@+id/textTitle"
             android:layout_width="245dp"
@@ -38,6 +40,7 @@
             android:textSize="22sp"
             android:textStyle="bold" />
 
+        <!-- Data do programa -->
         <TextView
             android:id="@+id/textDate"
             android:layout_width="wrap_content"
@@ -48,6 +51,7 @@
             android:textSize="14sp" />
     </LinearLayout>
 
+    <!-- Layout para a barra de progresso -->
     <androidx.constraintlayout.widget.ConstraintLayout
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
@@ -55,6 +59,7 @@
         android:layout_centerVertical="true"
         tools:ignore="RelativeOverlap">
 
+        <!-- Círculo externo -->
         <ImageView
             android:layout_width="43dp"
             android:layout_height="43dp"
@@ -65,6 +70,7 @@
             app:layout_constraintTop_toTopOf="parent"
             tools:ignore="ContentDescription" />
 
+        <!-- Barra de progresso cinza -->
         <ProgressBar
             android:id="@+id/greyCircle"
             android:layout_width="50dp"
@@ -77,6 +83,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Barra de progresso colorida -->
         <ProgressBar
             android:id="@+id/progressBar"
             android:layout_width="50dp"
@@ -89,6 +96,7 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
+        <!-- Texto da progressão -->
         <TextView
             android:id="@+id/textProgress"
             android:layout_width="wrap_content"
@@ -103,6 +111,4 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
     </androidx.constraintlayout.widget.ConstraintLayout>
-
-    <!-- Add more TextViews or other UI elements as needed for your data model -->
 </RelativeLayout>
