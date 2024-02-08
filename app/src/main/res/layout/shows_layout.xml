@@ -31,7 +31,8 @@
             android:id="@+id/textTitle"
             android:layout_width="245dp"
             android:layout_height="wrap_content"
-            android:layout_marginBottom="8dp"
+            android:layout_marginTop="-8dp"
+            android:layout_marginBottom="16dp"
             android:fontFamily="@font/noto_sans_bold"
             android:textColor="@color/darkblue"
             android:textSize="22sp"
@@ -41,7 +42,7 @@
             android:id="@+id/textDate"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_marginTop="-10dp"
+            android:layout_marginTop="-18dp"
             android:fontFamily="@font/noto_sans"
             android:textColor="@color/gray"
             android:textSize="14sp" />

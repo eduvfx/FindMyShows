@@ -47,7 +47,20 @@
 
     </androidx.appcompat.widget.Toolbar>
 
+    <ProgressBar
+        android:id="@+id/progressBarDetails"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleLarge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <androidx.core.widget.NestedScrollView
+        android:id="@+id/detailsScroll"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:layout_below="@id/toolbar"
@@ -72,7 +85,7 @@
             <View
                 android:layout_width="match_parent"
                 android:layout_height="250dp"
-                android:background="#80000000"
+                android:background="#80032541"
                 app:layout_constraintEnd_toEndOf="parent"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toTopOf="parent" />
@@ -199,7 +212,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/noto_sans_bold"
                 android:text="Overview"
-                android:textColor="@color/black"
+                android:textColor="@color/darkblue"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/background"
@@ -226,7 +239,7 @@
                 android:layout_marginTop="5dp"
                 android:fontFamily="@font/noto_sans_bold"
                 android:text="Keywords"
-                android:textColor="@color/black"
+                android:textColor="@color/darkblue"
                 android:textSize="20sp"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/overview"
@@ -237,7 +250,7 @@
                 android:layout_width="match_parent"
                 android:layout_height="wrap_content"
                 android:layout_marginStart="18dp"
-                android:layout_marginTop="45dp"
+                android:layout_marginTop="50dp"
                 android:layout_marginEnd="18dp"
                 app:flow_horizontalGap="8dp"
                 app:flow_verticalGap="8dp"
@@ -247,6 +260,41 @@
                 app:flow_wrapMode="chain"
                 app:layout_constraintStart_toStartOf="parent"
                 app:layout_constraintTop_toBottomOf="@id/overview" />
+
+            <TextView
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_marginStart="18dp"
+                android:layout_marginTop="10dp"
+                android:fontFamily="@font/noto_sans_bold"
+                android:text="Episodes"
+                android:textColor="@color/darkblue"
+                android:textSize="20sp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/keywords"
+                tools:ignore="HardcodedText" />
+
+            <Spinner
+                android:id="@+id/dropdown"
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:padding="10dp"
+                android:paddingStart="0dp"
+                android:layout_marginStart="10dp"
+                android:layout_marginTop="50dp"
+                android:layout_marginEnd="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/keywords"
+                android:spinnerDropDownItemStyle="@layout/spinner_item"/>
+
+            <androidx.recyclerview.widget.RecyclerView
+                android:id="@+id/episodes"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="5dp"
+                android:layout_marginEnd="18dp"
+                app:layout_constraintStart_toStartOf="parent"
+                app:layout_constraintTop_toBottomOf="@id/dropdown"/>
         </androidx.constraintlayout.widget.ConstraintLayout>
     </androidx.core.widget.NestedScrollView>
 </RelativeLayout>

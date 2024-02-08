@@ -33,6 +33,18 @@
         app:layout_constraintVertical_bias="0.1"
         app:queryHint="Search for a TV show, movie, etc." />
 
+    <ProgressBar
+        android:id="@+id/progressBar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerInParent="true"
+        android:visibility="gone"
+        style="?android:attr/progressBarStyleLarge"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintBottom_toBottomOf="parent" />
+
     <androidx.recyclerview.widget.RecyclerView
         android:id="@+id/recyclerView"
         android:layout_width="match_parent"
@@ -43,23 +55,12 @@
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.50" />
 
-    <ProgressBar
-        android:id="@+id/progress"
-        android:visibility="invisible"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        app:layout_constraintBottom_toBottomOf="parent"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.50"/>
-
     <TextView
         android:id="@+id/noResults"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:fontFamily="@font/ubuntu_bold"
-        android:visibility="invisible"
+        android:visibility="gone"
         android:text="No results found."
         android:textColor="@color/darkgray"
         android:textSize="20sp"
