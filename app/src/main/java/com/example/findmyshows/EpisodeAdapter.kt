@@ -66,10 +66,30 @@ class EpisodeAdapter(private val itemList: List<Episode>) :
 
         // Formata a data do episódio
         private fun formatDate(inputDate: String): String {
+            val parts = inputDate.split("-")
+            val dayOfMonth = if (parts[2].length == 1) {
+                "0" + parts[2]
+            } else {
+                parts[2]
+            }.toInt()
+
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val outputFormat = SimpleDateFormat("dd '/' MMMM '/' yyyy", Locale("en", "US"))
+            val outputFormat = SimpleDateFormat("d'${getDayOfMonthSuffix(dayOfMonth)}' MMMM yyyy", Locale.ENGLISH)
             val date = inputFormat.parse(inputDate)
             return outputFormat.format(date!!)
+        }
+
+        // Devolve o sufixo correto em inglês
+        private fun getDayOfMonthSuffix(n: Int): String {
+            if (n in 11..13) {
+                return "th"
+            }
+            return when (n % 10) {
+                1 -> "st"
+                2 -> "nd"
+                3 -> "rd"
+                else -> "th"
+            }
         }
     }
 }

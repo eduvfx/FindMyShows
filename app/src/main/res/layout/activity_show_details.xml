@@ -25,7 +25,7 @@
             android:fontFamily="@font/noto_sans"
             android:text=""
             android:textColor="@android:color/white"
-            android:textSize="18sp"
+            android:textSize="16sp"
             android:textStyle="bold" />
 
         <!-- Ícone da barra de ferramentas -->
