@@ -191,7 +191,7 @@ class ShowDetails : AppCompatActivity() {
 
     // Mostra os detalhes do programa na interface
     private fun displayShowDetails(apiResponse: QueryShow) {
-        val score = apiResponse.vote_average.times(10).roundToInt()
+        val score = (apiResponse.vote_average * 10).toInt()
 
         setProgressBarColor(score)
 

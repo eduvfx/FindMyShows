@@ -67,7 +67,7 @@ class EpisodeAdapter(private val itemList: List<Episode>) :
         // Formata a data do episódio
         private fun formatDate(inputDate: String): String {
             val inputFormat = SimpleDateFormat("yyyy-MM-dd", Locale.getDefault())
-            val outputFormat = SimpleDateFormat("dd 'de' MMMM 'de' yyyy", Locale("pt", "PT"))
+            val outputFormat = SimpleDateFormat("dd '/' MMMM '/' yyyy", Locale("en", "US"))
             val date = inputFormat.parse(inputDate)
             return outputFormat.format(date!!)
         }

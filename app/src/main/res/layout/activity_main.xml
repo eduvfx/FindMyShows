@@ -33,7 +33,7 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         app:layout_constraintVertical_bias="0.1"
-        app:queryHint="Pesquisar por um programa de TV, filme, etc." />
+        app:queryHint="Search for a TV show." />
 
     <!-- Barra de progresso -->
     <ProgressBar
@@ -93,7 +93,7 @@
     <View
         android:layout_width="375dp"
         android:layout_height="1dp"
-        android:background="@color/gray"
+        android:background="@color/lightgray"
         android:contentDescription="Borda cinza"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
